@@ -46,7 +46,7 @@ services:
     container_name: promtail
     volumes:
       - ./promtail/:/etc/promtail/
-      - /var/log:/var/log
+      - /var/log:/var/log/syslog
     command: -config.file=/etc/promtail/docker-config.yaml
     networks:
       - monitoring
@@ -55,7 +55,7 @@ services:
   node-exporter:
     image: prom/node-exporter
     container_name: node-exporter
-    hostname: whatever-server-name
+    hostname: docker-server
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
